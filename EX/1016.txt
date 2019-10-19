@@ -1,0 +1,77 @@
+const byte ledPin =13;
+void setup() {
+  Serial.begin(9600);
+  Serial.println("Hello,");
+  Serial.print("\tLED pin is: ");
+  Serial.print(ledPin);
+  Serial.print("\nBYE!!!!!");
+}
+
+void loop() {
+  
+}
+
+
+==================================
+void setup() {
+  tone(4,3000,1000);
+  delay(1000);
+  pinMode(10,INPUT);pinMode(9,OUTPUT);
+  Serial.begin(9600);
+}
+
+void loop() {
+  int irLeft=irDetect(9,10,38000);
+  Serial.println(irLeft);
+  delay(100);
+}
+
+int irDetect(int irLedPin,int irReceiverPin,long frequency){
+  tone(irLedPin,frequency,8);
+  delay(1);
+  int ir=digitalRead(irReceiverPin);
+  delay(1);
+  return ir;
+  }
+
+===================================
+
+
+
+void setup() {
+  tone(4,3000,1000);
+  delay(1000);
+  pinMode(10,INPUT);pinMode(9,OUTPUT);
+  Serial.begin(9600);
+}
+
+void loop() {
+  
+  int irLeft=irDetect(9,10,38000);
+  Serial.println(irLeft);
+  if (irLeft ==0)
+  {
+   
+   Serial.print("有障礙物,");
+  }
+  else
+  {
+   
+   Serial.print("無障礙物,");
+   }
+  delay(500);
+  
+}
+//紅外線副程式
+int irDetect(int irLedPin,int irReceiverPin,long frequency){
+  tone(irLedPin,frequency,8);
+  delay(1);
+  int ir=digitalRead(irReceiverPin);
+  delay(1);
+  return ir;
+  }
+
+
+
+
+
